@@ -1,19 +1,9 @@
-import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter_home_widget/dto/ClassScheduleModel.dart';
 import 'package:flutter_home_widget/functions/get_semester_routine.dart';
 import 'package:flutter_home_widget/functions/sign_out.dart';
-import 'package:flutter_home_widget/presentation/Screens/home_page.dart';
-import 'package:flutter_home_widget/presentation/Screens/login_page.dart';
-import 'package:flutter_home_widget/presentation/controller/auth_controller.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_home_widget/presentation/components/routine_main.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_home_widget/presentation/components/my_button.dart';
-import 'package:flutter_home_widget/presentation/components/my_testfield.dart';
-import 'dart:async';
 
 class HomePage extends StatefulWidget {
   final dynamic updateLoggedInState;
@@ -49,11 +39,11 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 50,
+                      height: 25,
                     ),
                     const Icon(Icons.home, size: 100),
                     const SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
                     const Text(
                       'Welcome. Please enter your id and password',
@@ -61,6 +51,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(
                       height: 50,
+                    ),
+                    RoutineMain(
+                      semesterRoutines: semestersData,
+                      totalSemesterNumber: semestersData.length,
                     ),
                     const SizedBox(
                       height: 25,
